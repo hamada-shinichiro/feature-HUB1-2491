@@ -1,0 +1,116 @@
+[
+  {
+    "name": "${task_name}",
+    "image": "${repository_url}",
+    "essential": true,
+    "network_mode": "awsvpc",
+    "portMappings": [
+      {
+        "containerPort": 8080,
+        "hostPort": 8080,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-group": "${log_group}",
+        "awslogs-region": "${aws_region}",
+        "awslogs-stream-prefix": "${task_name}"
+      }
+    },
+    "environment": [
+      {
+        "name": "TZ",
+        "value": "Asia/Tokyo"
+      },
+      {
+        "name": "LANG",
+        "value": "en_US.utf-8"
+      }
+    ],
+    "command": [],
+    "secrets": [
+      {
+        "valueFrom": "/Env/${env}/SERVER_PORT",
+        "name": "SERVER_PORT"
+      },
+      {
+        "valueFrom": "/Env/${env}/DB_URL",
+        "name": "DB_URL"
+      },
+      {
+        "valueFrom": "/Env/${env}/DB_USERNAME",
+        "name": "DB_USERNAME"
+      },
+      {
+        "valueFrom": "/Env/${env}/DB_PASSWORD",
+        "name": "DB_PASSWORD"
+      },
+      {
+        "valueFrom": "/Env/${env}/APIAUTHENTICATION_DYNAMIC_APIAUTHENTICATIONDYNAMIC_TARGET_300_VALUE",
+        "name": "APIAUTHENTICATION_DYNAMIC_APIAUTHENTICATIONDYNAMIC_TARGET_300_VALUE"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_INITIALDELAY",
+        "name": "DELIVERYTASK_INITIALDELAY"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_FIXEDDELAY",
+        "name": "DELIVERYTASK_FIXEDDELAY"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_LIMITERROR",
+        "name": "DELIVERYTASK_LIMITERROR"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_LIMITWARN",
+        "name": "DELIVERYTASK_LIMITWARN"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_TIMEOUTVALUEFRANCHISE",
+        "name": "DELIVERYTASK_TIMEOUTVALUEFRANCHISE"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_TIMEOUTVALUEDELIVERYSYSTEM",
+        "name": "DELIVERYTASK_TIMEOUTVALUEDELIVERYSYSTEM"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_INITIALDELAY",
+        "name": "JOBCOMPLETE_INITIALDELAY"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_FIXEDDELAY",
+        "name": "JOBCOMPLETE_FIXEDDELAY"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_COREPOOLSIZE",
+        "name": "JOBCOMPLETE_COREPOOLSIZE"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_QUEUECAPACITY",
+        "name": "JOBCOMPLETE_QUEUECAPACITY"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_LIMITWARNING",
+        "name": "JOBCOMPLETE_LIMITWARNING"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_LIMITERROR",
+        "name": "JOBCOMPLETE_LIMITERROR"
+      },
+      {
+        "valueFrom": "/Env/${env}/JOBCOMPLETE_TIMEOUTVALUEJOBCOMPLETE",
+        "name": "JOBCOMPLETE_TIMEOUTVALUEJOBCOMPLETE"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_COREPOOLSIZE",
+        "name": "DELIVERYTASK_COREPOOLSIZE"
+      },
+      {
+        "valueFrom": "/Env/${env}/DELIVERYTASK_QUEUECAPACITY",
+        "name": "DELIVERYTASK_QUEUECAPACITY"
+      }
+    ]
+  }
+]
